@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,13 @@ class MainActivity : AppCompatActivity() {
         typedArray.recycle()
 
         // Display images specified in imageArray in Spinner and RecyclerView
+        spinner?.apply{
+            adapter = CustomSpinnerAdapter(this@MainActivity, imageArray)
+        }
 
+        recyclerView?.apply{
+            adapter = CustomRecyclerAdapter(imageArray)
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
     }
 }
